@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sonqollay-web</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="assets/css/Navbar.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
+</head>
+
+<body style="background: url(&quot;assets/img/banners/Banner-Sonqollay.jpg&quot;);">
+    <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
+        <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+            <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" data-bss-hover-animate="rubberBand" style="border-radius: 5px;">
+                <div class="p-5"><a href="index.html"><img class="img-fluid" src="assets/img/logos/LOGO SONQOLLAY.png"></a>
+                    <div class="text-center">
+                        <h4 class="text-dark mb-4">Únete a nuestra comunidad</h4>
+                    </div>
+                    <form id="registrationForm" class="user" action="back/registro.php" method="post">
+                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" name="email" placeholder="Email" required=""></div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" name="password" placeholder="Contraseña" required=""></div>
+                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="verifyPassword" name="verifyPassword" placeholder="Repetir Contraseña" required=""></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombres" name="nombres" placeholder="Nombres" required=""></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="Apellido Paterno" required=""></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="apellido_materno" name="apellido_materno" placeholder="Apellido Materno" required=""></div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="gender"><strong>Género</strong></label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="">Selecciona una opción</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <p id="emailErrorMsg" class="text-danger" style="display:none;">Correo electrónico inválido</p>
+                            <p id="passwordErrorMsg" class="text-danger" style="display:none;">Las contraseñas no coinciden o no tienen al menos 8 caracteres</p>
+                            <p id="emailExistsMsg" class="text-danger" style="display:none;">Este correo electrónico ya está registrado</p>
+                            <p id="emailSuccessMsg" class="text-success" style="display:none;">Registro correcto</p>
+                        </div>
+
+                        <button class="btn btn-primary d-block btn-user w-100" type="submit" name="submitBtn" id="submitBtn">Regístrate</button>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col"><a class="btn btn-primary d-block btn-user w-100" role="button" id="submitBtn-1" style="background: rgb(237, 24, 10);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-google">
+                                        <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"></path>
+                                    </svg>&nbsp; &nbsp;Regístrate con Google
+                                </a>
+                            </div>
+                            <div class="col"><a class="btn btn-primary d-block btn-user w-100" role="button" id="submitBtn-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+                                    </svg>&nbsp; &nbsp;Regístrate con Facebook
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                    </form>
+                    <div class="text-center"><a class="small" href="recuperar.html">¿Olvidaste tu contraseña?</a></div>
+                    <div class="text-center"><a class="small" href="ingreso.html" data-bs-target="ingreso.html">¿Ya tienes una Cuenta? ¡Ingresa!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let verifyPassword = document.getElementById("verifyPassword");
+        let submitBtn = document.getElementById("submitBtn");
+        let emailErrorMsg = document.getElementById('emailErrorMsg');
+        let passwordErrorMsg = document.getElementById('passwordErrorMsg');
+        let emailExistsMsg = document.getElementById('emailExistsMsg');
+        let emailSuccessMsg = document.getElementById('emailSuccessMsg');
+
+        function displayErrorMsg(type, msg) {
+            if (type === "email") {
+                emailErrorMsg.style.display = "block";
+                emailErrorMsg.innerHTML = msg;
+            } else if (type === "password") {
+                passwordErrorMsg.style.display = "block";
+                passwordErrorMsg.innerHTML = msg;
+            } else if (type === "emailExists") {
+                emailExistsMsg.style.display = "block";
+                emailExistsMsg.innerHTML = msg;
+            } else if (type === "emailSuccess") {
+                emailSuccessMsg.style.display = "block";
+                emailSuccessMsg.innerHTML = msg;
+            }
+            submitBtn.disabled = true;
+        }
+
+        function hideErrorMsg(type) {
+            if (type === "email") {
+                emailErrorMsg.style.display = "none";
+                emailErrorMsg.innerHTML = "";
+            } else if (type === "password") {
+                passwordErrorMsg.style.display = "none";
+                passwordErrorMsg.innerHTML = "";
+            } else if (type === "emailExists") {
+                emailExistsMsg.style.display = "none";
+                emailExistsMsg.innerHTML = "";
+            } else if (type === "emailSuccess") {
+                emailSuccessMsg.style.display = "none";
+                emailSuccessMsg.innerHTML = "";
+            }
+
+            // Enable submit button if no errors are displayed
+            if (emailErrorMsg.innerHTML === "" && passwordErrorMsg.innerHTML === "" && emailExistsMsg.innerHTML === "" && emailSuccessMsg.innerHTML === "") {
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Validate password upon input
+        password.addEventListener("input", function() {
+            validatePasswords();
+        });
+
+        verifyPassword.addEventListener("input", function() {
+            validatePasswords();
+        });
+
+        function validatePasswords() {
+            if (password.value !== verifyPassword.value) {
+                displayErrorMsg("password", "Las contraseñas no coinciden");
+            } else if (password.value.length < 8) {
+                displayErrorMsg("password", "La contraseña debe tener al menos 8 caracteres");
+            } else {
+                hideErrorMsg("password");
+            }
+        }
+
+		function checkEmailExists(emailValue) {
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST", "check_email.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					if (xhr.responseText === '{"exists":true}') {
+						displayErrorMsg("emailExists", "Este correo electrónico ya está registrado");
+						hideErrorMsg("emailSuccess"); // Oculta el mensaje de registro correcto si el correo electrónico ya está registrado
+					} else {
+						hideErrorMsg("emailExists");
+						hideErrorMsg("emailSuccess"); // Oculta el mensaje de registro correcto si el correo electrónico ya está registrado
+					}
+					enableSubmitButton(); // Habilita el botón de registro nuevamente si no hay errores
+				}
+			};
+			xhr.send("email=" + encodeURIComponent(emailValue));
+		}
+
+		function validateForm() {
+			if (email.value.trim() === "" || password.value.trim() === "" || verifyPassword.value.trim() === "" || nombres.value.trim() === "" || apellido_paterno.value.trim() === "" || apellido_materno.value.trim() === "" || gender.value === "") {
+				return false; // Devuelve falso si algún campo está vacío
+			}
+			return true; // Devuelve verdadero si todos los campos están llenos
+		}
+
+		function enableSubmitButton() {
+			if (validateForm() && emailErrorMsg.innerHTML === "" && passwordErrorMsg.innerHTML === "" && emailExistsMsg.innerHTML === "" && emailSuccessMsg.innerHTML === "") {
+				submitBtn.disabled = false;
+			} else {
+				submitBtn.disabled = true;
+			}
+		}
+
+        // Validate email upon input
+        email.addEventListener("input", function() {
+            // Check if the email is valid using a regular expression (string@string.string)
+            if (email.value.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+                hideErrorMsg("email");
+                checkEmailExists(email.value);
+            } else {
+                displayErrorMsg("email", "Correo electrónico inválido");
+            }
+        });
+
+		
+
+        // Validate form before submitting
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            if (password.value.length < 8 || password.value !== verifyPassword.value || !email.value.match(/^[^@]+@[^@]+\.[^@]+$/) || emailExistsMsg.innerHTML !== "") {
+                event.preventDefault();
+                if (password.value.length < 8) {
+                    displayErrorMsg("password", "La contraseña debe tener al menos 8 caracteres");
+                }
+                if (password.value !== verifyPassword.value) {
+                    displayErrorMsg("password", "Las contraseñas no coinciden");
+                }
+                if (!email.value.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+                    displayErrorMsg("email", "Correo electrónico inválido");
+                }
+                if (emailExistsMsg.innerHTML !== "") {
+                    displayErrorMsg("emailExists", "Este correo electrónico ya está registrado");
+                }
+            }
+        });
+
+        
+    </script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+</body>
+
+</html>

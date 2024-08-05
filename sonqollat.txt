@@ -1,0 +1,9 @@
+MySQL 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 's0nQ0Ll4y';
+User: root
+Password: s0nQ0Ll4y
+
+CREATE USER 'sonqollay'@'%' IDENTIFIED BY 's0nQ0Ll4y';
+GRANT ALL PRIVILEGES ON *.* TO 'sonqollay’@‘%’;
+User: sonqollay
+Password: s0nQ0Ll4y

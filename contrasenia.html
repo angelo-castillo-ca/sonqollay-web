@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sonqollay-web</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="assets/css/Navbar.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .password-toggle-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body style="background: url(&quot;assets/img/banners/Banner-Sonqollay.jpg&quot;);background-size: auto;">
+    <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
+        <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+            <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" data-bss-hover-animate="rubberBand" style="border-radius: 5px;">
+                <div class="p-5"><a href="index.html"><img class="img-fluid" src="assets/img/logos/LOGO SONQOLLAY.png"></a>
+                    <div class="text-center">
+                        <h4 class="text-dark mb-4">Recuperar Contraseña</h4>
+                    </div>
+                    <form class="user" action="back/reset_password.php" method="post" id="resetPasswordForm">
+                        <div class="mb-3">
+                            <input class="form-control form-control-user" type="email" name="email" id="email" placeholder="Email" required="">
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input class="form-control form-control-user" type="password" name="newPassword" id="newPassword" placeholder="Nueva Contraseña" required="">
+                            <button type="button" class="position-absolute top-50 end-0 translate-middle-y password-toggle-btn" onclick="togglePasswordVisibility('newPassword')">
+                                <i id="toggleNewPassword" class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input class="form-control form-control-user" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar Contraseña" required="">
+                            <button type="button" class="position-absolute top-50 end-0 translate-middle-y password-toggle-btn" onclick="togglePasswordVisibility('confirmPassword')">
+                                <i id="toggleConfirmPassword" class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
+                        <div class="row mb-3">
+                            <p id="emailErrorMsg" class="text-danger" style="display:none;">Correo electrónico inválido</p>
+                            <p id="passwordErrorMsg" class="text-danger" style="display:none;">Las contraseñas no coinciden o no tienen al menos 8 caracteres</p>
+                            <p id="emailNotFoundMsg" class="text-danger" style="display:none;">Este correo no está registrado</p>
+                        </div>
+                        <button class="btn btn-primary d-block btn-user w-100" type="submit" id="submitBtn">Cambiar Contraseña</button>
+                        <hr>
+                    </form>
+                    <div class="text-center"><a class="small" href="ingreso.html">¿Ya tienes una Cuenta? ¡Ingresa!</a></div>
+                    <div class="text-center"><a class="small" href="registro.html">¿Aún no tienes una Cuenta? ¡Regístrate!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = passwordInput.nextElementSibling;
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+            } else {
+                passwordInput.type = "password";
+                toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            }
+        }
+        function togglePasswordVisibility(inputId, toggleId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = document.getElementById(toggleId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.textContent = "Ocultar";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.textContent = "Mostrar";
+            }
+        }
+
+        let email = document.getElementById("email");
+        let newPassword = document.getElementById("newPassword");
+        let confirmPassword = document.getElementById("confirmPassword");
+        let submitBtnReset = document.getElementById("submitBtn");
+        let emailErrorMsgReset = document.getElementById('emailErrorMsg');
+        let passwordErrorMsgReset = document.getElementById('passwordErrorMsg');
+    
+        function displayErrorMsg(type, msg) {
+            if (type === "email") {
+                emailErrorMsg.style.display = "block";
+                emailErrorMsg.innerHTML = msg;
+            } else if (type === "password") {
+                passwordErrorMsg.style.display = "block";
+                passwordErrorMsg.innerHTML = msg;
+            }
+            submitBtnReset.disabled = true;
+        }
+    
+        function hideErrorMsg(type) {
+            if (type === "email") {
+                emailErrorMsg.style.display = "none";
+                emailErrorMsg.innerHTML = "";
+            } else if (type === "password") {
+                passwordErrorMsg.style.display = "none";
+                passwordErrorMsg.innerHTML = "";
+            }
+    
+            // Enable submit button if no errors are displayed
+            if (emailErrorMsg.innerHTML === "" && passwordErrorMsg.innerHTML === "") {
+                submitBtnReset.disabled = false;
+            }
+        }
+    
+        // Validate password upon input
+        newPassword.addEventListener("input", function() {
+            validatePasswords();
+        });
+    
+        confirmPassword.addEventListener("input", function() {
+            validatePasswords();
+        });
+    
+        function validatePasswords() {
+            if (newPassword.value !== confirmPassword.value) {
+                displayErrorMsg("password", "Las contraseñas no coinciden");
+            } else if (newPassword.value.length < 8) {
+                displayErrorMsg("password", "La contraseña debe tener al menos 8 caracteres");
+            } else {
+                hideErrorMsg("password");
+            }
+        }
+
+        function checkEmailExists(emailValue) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "check_email.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                if (xhr.responseText === '{"exists":true}') {
+                    displayErrorMsg("emailNotFound", "Este correo no está registrado");
+                    hideErrorMsg("emailSuccess"); // Oculta el mensaje de registro correcto si el correo electrónico ya está registrado
+                } else {
+                    hideErrorMsg("emailNotFound");
+                    hideErrorMsg("emailSuccess"); // Oculta el mensaje de registro correcto si el correo electrónico ya está registrado
+                }
+            }
+        };
+        xhr.send("email=" + encodeURIComponent(emailValue));
+    }
+    
+
+        // Validate email upon input
+        email.addEventListener("input", function() {
+            // Check if the email is valid using a regular expression (string@string.string)
+            if (email.value.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+                hideErrorMsg("email");
+                checkEmailExists(email.value);
+            } else {
+                displayErrorMsg("email", "Correo electrónico inválido");
+            }
+        });
+
+    // Validate form before submitting
+        document.getElementById('resetPasswordForm').addEventListener('submit', function(event) {
+            if (newPassword.value.length < 8 || newPassword.value !== confirmPassword.value || !email.value.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+                event.preventDefault();
+                if (newPassword.value.length < 8) {
+                    displayErrorMsg("password", "La contraseña debe tener al menos 8 caracteres");
+                }
+                if (newPassword.value !== confirmPassword.value) {
+                    displayErrorMsg("password", "Las contraseñas no coinciden");
+                }
+                if (!email.value.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+                    displayErrorMsg("email", "Correo electrónico inválido");
+                }
+            }
+            // No necesitamos un else aquí, ya que el formulario se envía solo si pasa la validación
+        });
+
+        // Esta función muestra la alerta de Bootstrap cuando la contraseña se actualiza correctamente
+        function showPasswordUpdatedAlert() {
+            const alertDiv = document.getElementById("passwordUpdatedAlert");
+            alertDiv.style.display = "block";
+        }
+    </script>   
+</body>
+
+</html>
